@@ -6,122 +6,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/Style.css">
     <title>Cadastro de Livros</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Verdana, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .body1 {
+            background-color: #f0f0f0;
+            font-family: Verdana, Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #258cd1;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 
-<body>
+<body1>
     <header>
-        <h1>Livraria Fantástica</h1>
+        <h1>Livraria</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="#">Livros</a></li>
-                <li><a href="#">Autores</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="Cadastro.html">Comprar</a></li>
             </ul>
         </nav>
     </header>
-
+</body1>
+<body>
     <main>
-        <section class="container">
-            <form>
-                <fieldset>
-                    <legend>Cadastro de Livros</legend>
+        <div class "form-container">
 
-                    <div class="input-container">
-                        <label for="titulo">Título</label>
-                        <input type="text" name="titulo" id="titulo" placeholder="Título do livro" required autofocus>
-                    </div>
+            <h1>Formulário de Compra</h1>
 
-                    <div class="input-container">
-                        <label for="editora">Editora</label>
-                        <input type="text" name="editora" id="editora" placeholder="Editora" required>
-                    </div>
+            <form id="compraLivroForm">
+                <div class "form-container">
+                    <form action="processar_formulario.php" method="POST">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
 
-                    <div class="input-container">
-                        <label for="dtpublicacao">Publicação</label>
-                        <input type="date" name="dtpublicacao" id="dtpublicacao" required>
-                    </div>
+                        <label for="sobrenome">Sobrenome:</label>
+                        <input type="text" id="sobrenome" name="sobrenome" required>
 
-                    <div class="input-container">
-                        <label>Idioma</label>
-                        <div class="input-check">
-                            <input type="checkbox" name="idioma" value="Português" id="portugues">
-                            <label for="portugues">Português</label>
-                        </div>
-                        <div class="input-check">
-                            <input type="checkbox" name="idioma" value="Inglês" id="ingles">
-                            <label for="ingles">Inglês</label>
-                        </div>
-                        <div class="input-check">
-                            <input type="checkbox" name="idioma" value="Espanhol" id="espanhol">
-                            <label for="espanhol">Espanhol</label>
-                        </div>
-                    </div>
+                        <label for="email">Endereço de E-mail:</label>
+                        <input type="email" id="email" name="email" required>
 
-                    <div class="input-container">
-                        <label for="isbn">ISBN</label>
-                        <input type="text" name="isbn" id="isbn" placeholder="ISBN do livro" pattern="\d{3}-\d{10}"
-                            required>
-                    </div>
+                    </form>
+                </div>
+                <label for="livro">Livro:</label>
+                <select id="livro" name="livro" required>
+                    <option value="" disabled selected>Selecione um livro</option>
+                    <option value="Harry Potter e a Pedra Filosofal">Harry Potter e a Pedra Filosofal</option>
+                    <option value="Diário de um Banana">Diário de um Banana</option>
+                    <option value="Crepúsculo">Crepúsculo</option>
+                    <option value="Pequeno Príncipe">Pequeno Príncipe</option>
+                    <option value="De Volta ao Jogo">De Volta ao Jogo</option>
+                    <option value="Aventura Jurássica">Aventura Jurássica</option>
+                </select><br><br>
 
-                    <div class="input-container">
-                        <label for="ano">Ano</label>
-                        <input type="number" name="ano" id="ano" placeholder="Ano de publicação" required>
-                    </div>
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" min="1" value="1" required><br><br>
 
-                    <div class="input-container">
-                        <label for="paginas">Páginas</label>
-                        <input type="number" name="paginas" id="paginas" placeholder="Número de páginas" required>
-                    </div>
-
-                    <div class="input-container">
-                        <label for="categoria">Categoria</label>
-                        <select name="categoria" id="categoria" required>
-                            <option value="">Selecione</option>
-                            <option value="Ação">Ação</option>
-                            <option value="Aventura">Aventura</option>
-                            <option value="Comédia">Comédia</option>
-                            <option value="Drama">Drama</option>
-                            <option value="Ficção Científica">Ficção Científica</option>
-                            <option value="Romance">Romance</option>
-                            <option value="Suspense">Suspense</option>
-                            <option value="Terror">Terror</option>
-                        </select>
-                    </div>
-
-                    <div class="input-container">
-                        <label>Estado do Livro</label>
-                        <div class="radio-group">
-                            <input type="radio" name="situacao" id="novo" value="Novo" required checked>
-                            <label for="novo">Novo</label>
-
-                            <input type="radio" name="situacao" id="usado" value="Usado" required>
-                            <label for="usado">Usado</label>
-                        </div>
-                    </div>
-
-                    <div class="input-container">
-                        <label for="resumo">Resumo</label>
-                        <textarea name="resumo" id="resumo" placeholder="Resumo do livro" rows="5" required></textarea>
-                    </div>
-
-                    <div class="input-container">
-                        <label for="capa">Capa</label>
-                        <input type="file" name="capa" id="capa" accept="image/*">
-                    </div>
-
-                    <div class="actions">
-                        <button type="submit">Cadastrar</button>
-                        <button type="reset">Limpar</button>
-                    </div>
-
+                <input type="submit" value="Enviar">
                 </fieldset>
             </form>
-        </section>
+
+            <script>
+                document.getElementById('compraLivroForm').addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(this);
+                    const data = {};
+                    formData.forEach((value, key) => {
+                        data[key] = value;
+                    });
+                    console.log('Dados da compra:', data);
+                });
+            </script>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2023 Livraria Fantástica | Bernardo Barcaro Weiss</p>
+        <p>&copy; 2023 Livraria | Bernardo e Leonardo</p>
     </footer>
 </body>
 

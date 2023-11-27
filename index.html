@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/Style.css">
@@ -15,10 +14,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Início</a></li>
-                <li><a href="#">Livros</a></li>
-                <li><a href="#">Autores</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="Cadastro.html">Cadastro</a></li>
+                <li><a href="Cadastro.html">Comprar</a></li>
             </ul>
         </nav>
     </header>
@@ -28,51 +24,56 @@
                 <img src="Img/Hp.jpg" alt="Livro 1">
                 <h2>Harry Potter e a Pedra Filosofal</h2>
                 <p>Autor: J.K. Rowling</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('Harry Potter e a Pedra Filosofal')"><a
+                        href="Cadastro.html">Comprar</a></button>
             </div>
 
             <div class="card">
                 <img src="Img/DDUB.jpg" alt="Livro 2">
                 <h2>Diário de um Banana</h2>
                 <p>Autor: Jeff Kinney</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('Diário de um Banana')"><a
+                    href="Cadastro.html">Comprar</a></button>
             </div>
 
             <div class="card">
                 <img src="Img/C.jpg" alt="Livro 3">
                 <h2>Crepúsculo</h2>
                 <p>Autor: Stephenie Meyer</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('Crepúsculo')"><a
+                    href="Cadastro.html">Comprar</a></button>
             </div>
-        </section>
-    </main>
-    </header>
-    <main>
-        <section class="cards">
+
             <div class="card">
                 <img src="Img/OPP.jpg" alt="Livro 4">
                 <h2>Pequeno Príncipe</h2>
                 <p>Autor: Antoine De Saint-Exupéry</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('Pequeno Príncipe')"><a
+                    href="Cadastro.html">Comprar</a></button>
             </div>
 
             <div class="card">
                 <img src="Img/DVAJ.jpg" alt="Livro 5">
                 <h2>De Volta ao Jogo</h2>
                 <p>Autor: Rezende</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('De Volta ao Jogo')"><a
+                    href="Cadastro.html">Comprar</a></button>
             </div>
 
             <div class="card">
                 <img src="Img/AJ.jpg" alt="Livro 6">
                 <h2>Aventura Jurássica</h2>
                 <p>Autor: Marco Túlio</p>
-                <button>Comprar</button>
+                <button onclick="comprarLivro('Aventura Jurássica')"><a
+                    href="Cadastro.html">Comprar</a></button>
             </div>
         </section>
     </main>
+    </section>
+    </main>
+
     <footer>
-        <p>&copy; 2023 Livraria Fantástica | Bernardo Barcaro Weiss</p>
+        <p>&copy; 2023 Livraria | Bernardo E Leonardo</p>
     </footer>
 </body>
 
