@@ -1,146 +1,167 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="Style/Style.css">
-    <title>Cadastro de Livros</title>
     <style>
         body {
-            background-color: #f0f0f0;
-            font-family: Verdana, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
         }
 
-        .body1 {
-            background-color: #f0f0f0;
-            font-family: Verdana, Arial, sans-serif;
-            height: 100vh;
-            margin: 0;
+        .container {
+            margin-top: 20px;
+            max-width: 800px;
         }
 
-        .form-container {
+        h2 {
+            color: #343a40;
             text-align: center;
-            background-color: #fff;
-            padding: 30px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            width: 100%;
         }
 
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
+        #cart {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart th, #cart td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
             text-align: left;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="date"] {
+        #cart th {
+            background-color: #f8f9fa;
+        }
+
+        #total {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: right;
+            color: #007bff;
+        }
+
+        #checkout-form {
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #checkout-form input {
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
         }
 
-        input[type="submit"] {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
+        #checkout-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 15px;
-            transition: background-color 0.3s;
+            width: 100%;
         }
 
-        input[type="submit"]:hover {
-            background-color: #258cd1;
+        #checkout-btn:hover {
+            background-color: #218838;
         }
 
-        .error-message {
-            color: red;
+        #calculate-shipping-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #calculate-shipping-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #shipping-info {
+            margin-top: 20px;
+        }
+
+        #shipping-info p {
             font-size: 14px;
-            margin-top: 5px;
         }
     </style>
 </head>
-
-<body1>
-    <header>
-        <h1>Livraria</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="Cadastro.html">Comprar</a></li>
-            </ul>
-        </nav>
-    </header>
-</body1>
 <body>
-    <main>
-        <div class "form-container">
 
-            <h1>Formulário de Compra</h1>
+<div class="container">
+    <h2>Carrinho de Compras</h2>
 
-            <form id="compraLivroForm">
-                <div class "form-container">
-                    <form action="processar_formulario.php" method="POST">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
+    <table id="cart">
+        <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço Unitário</th>
+            <th>Total</th>
+            <th>Ação</th>
+        </tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+    </table>
 
-                        <label for="sobrenome">Sobrenome:</label>
-                        <input type="text" id="sobrenome" name="sobrenome" required>
+    <form id="checkout-form">
+        <label for="name">Nome do Cliente:</label>
+        <input type="text" id="name" class="form-control" required>
 
-                        <label for="email">Endereço de E-mail:</label>
-                        <input type="email" id="email" name="email" required>
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" class="form-control" required>
 
-                    </form>
-                </div>
-                <label for="livro">Livro:</label>
-                <select id="livro" name="livro" required>
-                    <option value="" disabled selected>Selecione um livro</option>
-                    <option value="Harry Potter e a Pedra Filosofal">Harry Potter e a Pedra Filosofal</option>
-                    <option value="Diário de um Banana">Diário de um Banana</option>
-                    <option value="Crepúsculo">Crepúsculo</option>
-                    <option value="Pequeno Príncipe">Pequeno Príncipe</option>
-                    <option value="De Volta ao Jogo">De Volta ao Jogo</option>
-                    <option value="Aventura Jurássica">Aventura Jurássica</option>
-                </select><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="form-control" required>
 
-                <label for="quantidade">Quantidade:</label>
-                <input type="number" id="quantidade" name="quantidade" min="1" value="1" required><br><br>
+        <label for="phone">Telefone:</label>
+        <input type="tel" id="phone" class="form-control" required>
 
-                <input type="submit" value="Enviar">
-                </fieldset>
-            </form>
-
-            <script>
-                document.getElementById('compraLivroForm').addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    const formData = new FormData(this);
-                    const data = {};
-                    formData.forEach((value, key) => {
-                        data[key] = value;
-                    });
-                    console.log('Dados da compra:', data);
-                });
-            </script>
+        <label for="cep">CEP:</label>
+        <div class="input-group mb-3">
+            <input type="text" id="cep" class="form-control" required>
+            <div class="input-group-append">
+                <button type="button" id="calculate-shipping-btn" class="btn"><i class="fas fa-truck"></i> Calcular Frete</button>
+            </div>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2023 Livraria | Bernardo e Leonardo</p>
-    </footer>
-</body>
 
+        <div id="shipping-info"></div>
+
+        <a href="index.html"><button id="checkout-btn" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Finalizar Compra</button></a>
+    </form>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+    function finalizarCompra() {
+        alert("Compra finalizada! Obrigado por comprar conosco.");
+    }
+
+    document.getElementById("checkout-btn").addEventListener("click", finalizarCompra);
+</script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
 </html>
