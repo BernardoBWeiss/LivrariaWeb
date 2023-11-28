@@ -1,80 +1,217 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style/Style.css">
-    <title>Livraria Fantástica</title>
+    <title>Livraria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .book {
+            border: 1px solid #ddd;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .book:hover {
+            transform: scale(1.05);
+        }
+
+        .book img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .book-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        .book-author {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .book-price {
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .add-to-cart-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #218838;
+        }
+
+        #cart {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        #cart h3 {
+            color: #007bff;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #checkout-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #checkout-btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <h1>Livraria Fantástica</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="Cadastro.html">Comprar</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="cards">
-            <div class="card">
-                <img src="Img/Hp.jpg" alt="Livro 1">
-                <h2>Harry Potter e a Pedra Filosofal</h2>
-                <p>Autor: J.K. Rowling</p>
-                <button onclick="comprarLivro('Harry Potter e a Pedra Filosofal')"><a
-                        href="Cadastro.html">Comprar</a></button>
-            </div>
 
-            <div class="card">
-                <img src="Img/DDUB.jpg" alt="Livro 2">
-                <h2>Diário de um Banana</h2>
-                <p>Autor: Jeff Kinney</p>
-                <button onclick="comprarLivro('Diário de um Banana')"><a
-                    href="Cadastro.html">Comprar</a></button>
-            </div>
+<header>
+    <h1>Livraria Fantástica</h1>
+</header>
 
-            <div class="card">
-                <img src="Img/C.jpg" alt="Livro 3">
-                <h2>Crepúsculo</h2>
-                <p>Autor: Stephenie Meyer</p>
-                <button onclick="comprarLivro('Crepúsculo')"><a
-                    href="Cadastro.html">Comprar</a></button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="book" id="book1">
+                <img src="Img/C.jpg" alt="Livro 1">
+                <div class="book-details">
+                    <div class="book-title">Livro 1</div>
+                    <div class="book-author">Stephenie Meyer</div>
+                    <div class="book-price">R$ 29.99</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Livro 1', 'Autor 1', 29.99)">Adicionar ao Carrinho</button>
+                </div>
             </div>
+        </div>
 
-            <div class="card">
-                <img src="Img/OPP.jpg" alt="Livro 4">
-                <h2>Pequeno Príncipe</h2>
-                <p>Autor: Antoine De Saint-Exupéry</p>
-                <button onclick="comprarLivro('Pequeno Príncipe')"><a
-                    href="Cadastro.html">Comprar</a></button>
+        <div class="col-md-4">
+            <div class="book" id="book2">
+                <img src="Img/AJ.jpg" alt="Livro 2">
+                <div class="book-details">
+                    <div class="book-title">Livro 2</div>
+                    <div class="book-author">Marco Túlio</div>
+                    <div class="book-price">R$ 29.99</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Livro 2', 'Autor 2', 29.99)">Adicionar ao Carrinho</button>
+                </div>
             </div>
+        </div>
 
-            <div class="card">
-                <img src="Img/DVAJ.jpg" alt="Livro 5">
-                <h2>De Volta ao Jogo</h2>
-                <p>Autor: Rezende</p>
-                <button onclick="comprarLivro('De Volta ao Jogo')"><a
-                    href="Cadastro.html">Comprar</a></button>
+        <div class="col-md-4">
+            <div class="book" id="book3">
+                <img src="Img/Hp.jpg" alt="Livro 3">
+                <div class="book-details">
+                    <div class="book-title">Livro 3</div>
+                    <div class="book-author">J. K. Rowling</div>
+                    <div class="book-price">R$ 29.99</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Livro 3', 'Autor 3', 29.99)">Adicionar ao Carrinho</button>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <div class="card">
-                <img src="Img/AJ.jpg" alt="Livro 6">
-                <h2>Aventura Jurássica</h2>
-                <p>Autor: Marco Túlio</p>
-                <button onclick="comprarLivro('Aventura Jurássica')"><a
-                    href="Cadastro.html">Comprar</a></button>
-            </div>
-        </section>
-    </main>
-    </section>
-    </main>
+    <div id="cart">
+        <h3>Carrinho</h3>
+        <ul id="cart-items" class="mb-3"></ul>
+        <button id="checkout-btn"><a href="Cadastro.html">Finalizar Compra</a></button>
+    </div>
+</div>
 
-    <footer>
-        <p>&copy; 2023 Livraria | Bernardo E Leonardo</p>
-    </footer>
+<footer>
+    &copy; 2023 Leonardo Carminatti e Bernardo Weiss
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    let cartItems = [];
+
+    function addToCart(bookTitle, bookAuthor, bookPrice) {
+        cartItems.push({
+            title: bookTitle,
+            author: bookAuthor,
+            price: bookPrice
+        });
+
+        updateCart();
+    }
+
+    function updateCart() {
+        let cart = document.getElementById("cart-items");
+        cart.innerHTML = "";
+
+        cartItems.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = `${item.title} - ${item.author} - R$ ${item.price.toFixed(2)}`;
+            cart.appendChild(li);
+        });
+
+        let cartSection = document.getElementById("cart");
+        cartSection.style.display = "block";
+    }
+
+    function checkout() {
+        if (cartItems.length === 0) {
+            alert("Adicione itens ao carrinho antes de finalizar a compra.");
+        } else {
+
+            window.location.href = "checkout.html";
+        }
+    }
+</script>
+
 </body>
-
 </html>
