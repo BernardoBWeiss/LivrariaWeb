@@ -180,6 +180,12 @@
     
     let cartItems = [];
 
+    // Recupera os itens do carrinho do localStorage, se existirem
+    if (localStorage.getItem('cartItems')) {
+        cartItems = JSON.parse(localStorage.getItem('cartItems'));
+        updateCart();
+    }
+
     function addToCart(bookTitle, bookAuthor, bookPrice) {
         cartItems.push({
             title: bookTitle,
@@ -187,7 +193,9 @@
             price: bookPrice
         });
 
+        // Atualiza o carrinho e salva no localStorage
         updateCart();
+        saveCartToLocalStorage();
     }
 
     function updateCart() {
@@ -204,6 +212,11 @@
         cartSection.style.display = "block";
     }
 
+    function saveCartToLocalStorage() {
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
     function checkout() {
         if (cartItems.length === 0) {
             alert("Adicione itens ao carrinho antes de finalizar a compra.");
@@ -212,7 +225,6 @@
             window.location.href = "checkout.html";
         }
     }
-    
 </script>
 
 
