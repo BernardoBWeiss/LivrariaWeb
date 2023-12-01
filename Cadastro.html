@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #cart th, #cart td {
+        #cart th,
+        #cart td {
             border: 1px solid #dee2e6;
             padding: 12px;
             text-align: left;
@@ -102,66 +104,97 @@
             font-size: 14px;
         }
     </style>
+
+
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Carrinho de Compras</h2>
+    <div class="container">
+        <h2>Carrinho de Compras</h2>
 
-    <table id="cart">
-        <thead>
-        <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Preço Unitário</th>
-            <th>Total</th>
-            <th>Ação</th>
-        </tr>
-        </thead>
-        <tbody id="cart-body"></tbody>
-    </table>
+        <table id="cart">
+            <table id="cart">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Total</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+            </table>
+        </table>
 
-    <form id="checkout-form">
-        <label for="name">Nome do Cliente:</label>
-        <input type="text" id="name" class="form-control" required>
+        <form id="checkout-form" onsubmit="return validarForm()">
+            <form id="checkout-form" onsubmit="return validarForm()">
+                <form id="checkout-form">
+                    <label for="name">Nome do Cliente:</label>
+                    <input type="text" id="name" class="form-control" required>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" class="form-control" required>
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" class="form-control" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" class="form-control" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" required>
 
-        <label for="phone">Telefone:</label>
-        <input type="tel" id="phone" class="form-control" required>
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" class="form-control" required>
 
-        <label for="cep">CEP:</label>
-        <div class="input-group mb-3">
-            <input type="text" id="cep" class="form-control" required>
-            <div class="input-group-append">
-                <button type="button" id="calculate-shipping-btn" class="btn"><i class="fas fa-truck"></i> Calcular Frete</button>
-            </div>
-        </div>
+                    <a href="index.html">
+                        <button type="submit" id="checkout-btn" class="btn btn-success">
+                            <i class="fas fa-shopping-cart"></i> Finalizar Compra
+                        </button>
+                    </a>
+                </form>
+            </form>
+        </form>
+    </div>
 
-        <div id="shipping-info"></div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        <a href="index.html"><button id="checkout-btn" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Finalizar Compra</button></a>
-    </form>
-</div>
+    <script>
+        function finalizarCompra() {
+            alert("Compra finalizada! Obrigado por comprar conosco.");
+            criarComprovante();
+        }
 
+        function criarComprovante() {
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script>
-
-    function finalizarCompra() {
-        alert("Compra finalizada! Obrigado por comprar conosco.");
-    }
-
-    document.getElementById("checkout-btn").addEventListener("click", finalizarCompra);
-</script>
+            var nome = document.getElementById("name").value;
+            var cpf = document.getElementById("cpf").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("phone").value;
+            var cep = document.getElementById("cep").value;
 
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            var comprovante = `
+            <h3>Comprovante de Compra</h3>
+            <p><strong>Nome:</strong> ${nome}</p>
+            <p><strong>CPF:</strong> ${cpf}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Telefone:</strong> ${telefone}</p>
+            <p><strong>CEP:</strong> ${cep}</p>
+        `;
+
+
+            alert(comprovante);
+        }
+
+        function validarForm() {
+
+
+
+            finalizarCompra();
+
+
+            return false;
+        }
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
